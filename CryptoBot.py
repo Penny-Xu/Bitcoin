@@ -6,7 +6,19 @@ import time
 from robinhood import Trader
 from pyrh import Robinhood
 
+# crypto api not integrated in pyrh
+# need to use crypto to avoid day trading rip
+# use Trader to buy / sell crypto currencies on Robinhood for now, lacks historical data
+# get historical data using another api since pyrh doesn't have crypto data
+# use tulipy to get indicators on data
+# profit
 
+
+with open('info.txt') as f:
+    for line in f:
+        username, password = line.split(':')
+
+#bot = Trader(username, password)
 bot = Trader.load_session('login.txt')
 print(bot.crypto.quote("btc"))
 print(bot.crypto.quote("doge"))
